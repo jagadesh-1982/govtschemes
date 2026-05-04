@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Schemes in India</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --gold: #FFB800;
+    --green: #00875A;
+    --teal: #007B82;
+    --navy: #0D2B55;
+    --cream: #FFF8EE;
+    --red: #D94F3D;
+    --purple: #6B3FA0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: 36px 48px 32px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 50%, rgba(255,107,0,0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 20%, rgba(0,135,90,0.18) 0%, transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .ashoka-badge {
+    width: 64px; height: 64px;
+    background: conic-gradient(var(--saffron) 0deg 120deg, #fff 120deg 240deg, var(--green) 240deg 360deg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  .hero-text h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+  .hero-text h1 span { color: var(--gold); }
+  .hero-text p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+  .hero-tag {
+    background: var(--saffron);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  .tricolor-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--saffron) 33.3%, #fff 33.3% 66.6%, var(--green) 66.6%);
+  }
+
+  /* ── NAV TABS ── */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    padding: 18px 48px 0;
+    background: var(--navy);
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  .tab-btn.active { background: var(--cream); color: var(--navy); }
+
+  /* ── CONTENT ── */
+  .content { padding: 32px 48px 48px; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Scheme cards grid */
+  .schemes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .scheme-card {
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .scheme-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .scheme-card::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .sc-ppf  { background: linear-gradient(135deg, #0D2B55 0%, #1a4a8a 100%); color: #fff; }
+  .sc-nsc  { background: linear-gradient(135deg, #00875A 0%, #00b374 100%); color: #fff; }
+  .sc-ssy  { background: linear-gradient(135deg, #D94F3D 0%, #ff6b57 100%); color: #fff; }
+  .sc-scss { background: linear-gradient(135deg, #6B3FA0 0%, #9b65d4 100%); color: #fff; }
+  .sc-kvp  { background: linear-gradient(135deg, #FF6B00 0%, #ffb800 100%); color: #fff; }
+  .sc-pomis{ background: linear-gradient(135deg, #007B82 0%, #00b0ba 100%); color: #fff; }
+  .sc-nps  { background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%); color: #fff; }
+
+  .card-abbr {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .card-name { font-size: 0.78rem; opacity: 0.8; margin-top: 2px; font-weight: 300; }
+  .card-rate {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 10px 0 2px;
+  }
+  .card-rate span { font-size: 0.85rem; font-weight: 400; opacity: 0.8; }
+  .card-meta {
+    display: flex; gap: 12px; margin-top: 10px;
+    font-size: 0.78rem; opacity: 0.85;
+  }
+  .card-pill {
+    background: rgba(255,255,255,0.2);
+    padding: 3px 10px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .card-tax {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .sec-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-title::before {
+    content: '';
+    width: 5px; height: 24px;
+    border-radius: 3px;
+    background: var(--saffron);
+    flex-shrink: 0;
+  }
+
+  /* ── ELIGIBILITY TABLE ── */
+  .elig-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+  .elig-table th {
+    background: var(--navy); color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.5px;
+    padding: 10px 16px; text-align: left;
+  }
+  .elig-table th:first-child { border-radius: 8px 0 0 8px; }
+  .elig-table th:last-child  { border-radius: 0 8px 8px 0; }
+  .elig-table td {
+    background: #fff;
+    padding: 10px 16px;
+    font-size: 0.83rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  .elig-table td:first-child { border-left: 1px solid #eee; border-radius: 8px 0 0 8px; font-weight: 600; }
+  .elig-table td:last-child  { border-right: 1px solid #eee; border-radius: 0 8px 8px 0; }
+  .elig-table tr:hover td { background: #fff8ee; }
+
+  /* ── ENROLLMENT STEPS ── */
+  .enroll-steps { display: flex; flex-direction: column; gap: 14px; }
+  .step {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: #fff; border-radius: 14px; padding: 18px 20px;
+    border-left: 4px solid var(--saffron);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .step-num {
+    min-width: 36px; height: 36px;
+    background: var(--saffron); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .step-body h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+  .step-body p  { font-size: 0.82rem; color: #555; line-height: 1.5; }
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .doc-pill {
+    background: #fff;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .doc-pill .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+
+  /* ── CALCULATOR ── */
+  .calc-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 640px) { .calc-wrap { grid-template-columns: 1fr; } }
+  .calc-panel {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 28px;
+    color: #fff;
+  }
+  .calc-panel h3 {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    margin-bottom: 20px; color: var(--gold);
+  }
+  .field { margin-bottom: 16px; }
+  .field label { font-size: 0.78rem; opacity: 0.7; display: block; margin-bottom: 6px; }
+  .field select, .field input {
+    width: 100%; padding: 10px 14px;
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 10px; color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field select:focus, .field input:focus { border-color: var(--gold); }
+  .field select option { background: var(--navy); }
+  .calc-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--saffron);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .calc-btn:hover { background: #e55a00; }
+  .result-panel {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+  .result-panel h3 {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 20px;
+  }
+  .result-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+  }
+  .result-row .label { font-size: 0.82rem; color: #777; }
+  .result-row .value {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--navy);
+  }
+  .result-total {
+    background: linear-gradient(135deg, var(--green), #00b374);
+    border-radius: 14px; padding: 18px 20px; margin-top: 14px;
+    text-align: center; color: #fff;
+  }
+  .result-total .t-label { font-size: 0.78rem; opacity: 0.85; }
+  .result-total .t-amount {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem;
+    margin-top: 4px;
+  }
+  .result-gain {
+    font-size: 0.82rem; opacity: 0.9;
+    margin-top: 4px;
+  }
+  .bar-wrap { margin-top: 16px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; margin-bottom: 4px; }
+  .bar-track { height: 10px; background: #f0f0f0; border-radius: 999px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+  .bar-principal { background: var(--navy); }
+  .bar-interest { background: var(--green); }
+
+  /* ── BENEFITS ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .benefit-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    border-top: 4px solid var(--saffron);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .benefit-card.bc-green { border-color: var(--green); }
+  .benefit-card.bc-teal  { border-color: var(--teal); }
+  .benefit-card.bc-purple{ border-color: var(--purple); }
+  .benefit-card .icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .benefit-card h4 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+  .benefit-card p  { font-size: 0.8rem; color: #555; line-height: 1.5; }
+
+  .tax-banner {
+    background: linear-gradient(135deg, var(--purple), #9b65d4);
+    border-radius: 20px; padding: 28px 32px; margin-top: 20px;
+    color: #fff;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 24px; align-items: center;
+  }
+  .tax-icon { font-size: 3rem; }
+  .tax-body h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+  .tax-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tax-chip {
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 5px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* ── KEY POINTS ── */
+  .kp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .kp-card {
+    background: #fff;
+    border-radius: 14px; padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative; overflow: hidden;
+  }
+  .kp-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+  }
+  .kp-card h4 { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+  .kp-card p  { font-size: 0.8rem; color: #555; line-height: 1.5; }
+
+  .rates-table { width: 100%; border-collapse: collapse; }
+  .rates-table th {
+    background: var(--navy); color: #fff;
+    font-family: 'Syne', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    padding: 12px 16px; text-align: left;
+  }
+  .rates-table td {
+    padding: 11px 16px; font-size: 0.83rem;
+    border-bottom: 1px solid #eee;
+  }
+  .rates-table tr:last-child td { border-bottom: none; }
+  .rates-table tr:nth-child(even) td { background: #fafafa; }
+  .rate-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+  .rate-badge.high { background: var(--saffron); }
+  .rates-note {
+    background: #fff8ee; border: 1.5px solid var(--gold);
+    border-radius: 12px; padding: 14px 18px; margin-top: 16px;
+    font-size: 0.8rem; color: #7a5c00;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 20px 48px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    .hero, .tabs, .content { padding-left: 20px; padding-right: 20px; }
+    .hero-text h1 { font-size: 1.6rem; }
+    .tab-btn { font-size: 0.7rem; padding: 8px 12px; }
+    .calc-wrap { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="ashoka-badge">🏛️</div>
+    <div class="hero-text" style="flex:1">
+      <h1><span>Government</span><br>Schemes in India</h1>
+      <p>Your complete guide to secure, tax-efficient wealth building — backed by the Government of India</p>
+    </div>
+    <div class="hero-tag">Q1 2025 Rates</div>
+  </div>
+</div>
+<div class="tricolor-bar"></div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('schemes')">📋 Schemes</button>
+  <button class="tab-btn" onclick="showTab('eligibility')">✅ Eligibility</button>
+  <button class="tab-btn" onclick="showTab('enroll')">📝 How to Enroll</button>
+  <button class="tab-btn" onclick="showTab('calculator')">🧮 Calculator</button>
+  <button class="tab-btn" onclick="showTab('benefits')">🎁 Benefits & Tax</button>
+  <button class="tab-btn" onclick="showTab('rates')">📈 Latest Rates</button>
+  <button class="tab-btn" onclick="showTab('keypoints')">🔑 Key Points</button>
+</div>
+
+<div class="content">
+
+  <!-- SCHEMES -->
+  <div class="section active" id="sec-schemes">
+    <div class="sec-title">All Government Savings Schemes</div>
+    <div class="schemes-grid">
+      <div class="scheme-card sc-ppf">
+        <div class="card-abbr">PPF</div>
+        <div class="card-name">Public Provident Fund</div>
+        <div class="card-rate">7.1% <span>p.a. (compounded annually)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ 15 Years</span>
+          <span class="card-pill">₹500 – ₹1.5L/yr</span>
+        </div>
+        <div class="card-tax">🛡️ EEE — Fully tax-free</div>
+      </div>
+      <div class="scheme-card sc-nsc">
+        <div class="card-abbr">NSC</div>
+        <div class="card-name">National Savings Certificate</div>
+        <div class="card-rate">7.7% <span>p.a. (compounded annually)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ 5 Years</span>
+          <span class="card-pill">Min ₹1,000</span>
+        </div>
+        <div class="card-tax">🛡️ Sec 80C deduction on principal</div>
+      </div>
+      <div class="scheme-card sc-ssy">
+        <div class="card-abbr">SSY</div>
+        <div class="card-name">Sukanya Samriddhi Yojana</div>
+        <div class="card-rate">8.2% <span>p.a. (compounded annually)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ 21 Years</span>
+          <span class="card-pill">₹250 – ₹1.5L/yr</span>
+        </div>
+        <div class="card-tax">🛡️ EEE — Fully tax-free (girl child)</div>
+      </div>
+      <div class="scheme-card sc-scss">
+        <div class="card-abbr">SCSS</div>
+        <div class="card-name">Senior Citizens Savings Scheme</div>
+        <div class="card-rate">8.2% <span>p.a. (quarterly payout)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ 5 Years</span>
+          <span class="card-pill">Up to ₹30L</span>
+        </div>
+        <div class="card-tax">🛡️ Sec 80C deduction</div>
+      </div>
+      <div class="scheme-card sc-kvp">
+        <div class="card-abbr">KVP</div>
+        <div class="card-name">Kisan Vikas Patra</div>
+        <div class="card-rate">7.5% <span>p.a. (doubles in ~115 months)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ ~9.7 Years</span>
+          <span class="card-pill">Min ₹1,000</span>
+        </div>
+        <div class="card-tax">ℹ️ No 80C — interest taxable</div>
+      </div>
+      <div class="scheme-card sc-pomis">
+        <div class="card-abbr">POMIS</div>
+        <div class="card-name">Post Office Monthly Income Scheme</div>
+        <div class="card-rate">7.4% <span>p.a. (monthly payout)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ 5 Years</span>
+          <span class="card-pill">Up to ₹9L (single)</span>
+        </div>
+        <div class="card-tax">ℹ️ Interest taxable; no 80C</div>
+      </div>
+      <div class="scheme-card sc-nps">
+        <div class="card-abbr">NPS</div>
+        <div class="card-name">National Pension System</div>
+        <div class="card-rate">9–12% <span>p.a. (market-linked)</span></div>
+        <div class="card-meta">
+          <span class="card-pill">⏳ Till age 60</span>
+          <span class="card-pill">Min ₹500/yr</span>
+        </div>
+        <div class="card-tax">🛡️ Sec 80C + 80CCD(1B) extra ₹50K</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELIGIBILITY -->
+  <div class="section" id="sec-eligibility">
+    <div class="sec-title">Eligibility Criteria</div>
+    <table class="elig-table">
+      <thead>
+        <tr>
+          <th>Scheme</th>
+          <th>Who Can Apply</th>
+          <th>Age Limit</th>
+          <th>Residency</th>
+          <th>Special Condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PPF</td>
+          <td>Any Indian citizen</td>
+          <td>No limit (minor via guardian)</td>
+          <td>Resident Indian</td>
+          <td>1 account per person</td>
+        </tr>
+        <tr>
+          <td>NSC</td>
+          <td>Any Indian citizen</td>
+          <td>No age limit</td>
+          <td>Resident Indian</td>
+          <td>Can hold jointly</td>
+        </tr>
+        <tr>
+          <td>SSY</td>
+          <td>Parents/guardians of girl child</td>
+          <td>Girl below 10 years</td>
+          <td>Resident Indian</td>
+          <td>Max 2 girls per family</td>
+        </tr>
+        <tr>
+          <td>SCSS</td>
+          <td>Senior citizens</td>
+          <td>60+ yrs (55+ if VRS/retired)</td>
+          <td>Resident Indian</td>
+          <td>Deposit within 1 month of retirement</td>
+        </tr>
+        <tr>
+          <td>KVP</td>
+          <td>Any Indian citizen, minor (guardian)</td>
+          <td>No limit</td>
+          <td>Resident Indian</td>
+          <td>No upper investment limit</td>
+        </tr>
+        <tr>
+          <td>POMIS</td>
+          <td>Any Indian citizen</td>
+          <td>10+ years (minor)</td>
+          <td>Resident Indian</td>
+          <td>Joint: up to ₹15L</td>
+        </tr>
+        <tr>
+          <td>NPS</td>
+          <td>Indian citizens & NRIs</td>
+          <td>18 – 70 years</td>
+          <td>Resident + NRI</td>
+          <td>Mandatory PRAN number required</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ENROLL -->
+  <div class="section" id="sec-enroll">
+    <div class="sec-title">How to Enroll</div>
+    <div class="enroll-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Choose Your Scheme</h4>
+          <p>Assess your goal — regular income (POMIS), long-term saving (PPF), girl child (SSY), or retirement (NPS/SCSS). Pick what aligns with your financial goal and tenure preference.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-body" style="margin-left:52px">
+          <h4 style="font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:8px">📄 Documents Required</h4>
+          <div class="docs-grid">
+            <div class="doc-pill"><span class="dot"></span>Aadhaar Card</div>
+            <div class="doc-pill"><span class="dot"></span>PAN Card</div>
+            <div class="doc-pill"><span class="dot"></span>Passport-size photo</div>
+            <div class="doc-pill"><span class="dot"></span>Address Proof</div>
+            <div class="doc-pill"><span class="dot"></span>Birth Certificate (SSY)</div>
+            <div class="doc-pill"><span class="dot"></span>Bank account details</div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Visit a Branch or Go Online</h4>
+          <p><strong>Offline:</strong> Visit any Post Office (India Post) or authorized bank branch (SBI, HDFC, ICICI, etc.). Carry original + photocopy of documents.<br>
+          <strong>Online:</strong> PPF/NPS via netbanking. NPS via eNPS portal (enps.nsdl.com). Some banks offer full online onboarding for PPF &amp; SCSS.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Fill the Application Form</h4>
+          <p>Complete the scheme-specific form (e.g., Form-1 for PPF). Provide nominee details. Submit KYC documents and make the initial deposit.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Receive Passbook / Account Number</h4>
+          <p>You'll receive a passbook (post office schemes) or account number (online/bank). For NPS, a PRAN (Permanent Retirement Account Number) is generated instantly.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Link &amp; Manage</h4>
+          <p>Link your account to auto-debit for regular contributions. Track your balance online or at the branch. File Form 15G/15H to avoid TDS on interest where applicable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="section" id="sec-calculator">
+    <div class="sec-title">Interest Calculator (5-Year Example)</div>
+    <div class="calc-wrap">
+      <div class="calc-panel">
+        <h3>⚙️ Configure Investment</h3>
+        <div class="field">
+          <label>SELECT SCHEME</label>
+          <select id="schemeSelect" onchange="updateRate()">
+            <option value="7.1" data-compound="yearly">PPF — 7.1% p.a.</option>
+            <option value="7.7" data-compound="yearly">NSC — 7.7% p.a.</option>
+            <option value="8.2" data-compound="yearly" selected>SSY/SCSS — 8.2% p.a.</option>
+            <option value="7.5" data-compound="yearly">KVP — 7.5% p.a.</option>
+            <option value="7.4" data-compound="monthly">POMIS — 7.4% p.a.</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>ANNUAL INVESTMENT (₹)</label>
+          <input type="number" id="principal" value="100000" min="500" step="1000" oninput="calculate()">
+        </div>
+        <div class="field">
+          <label>TENURE (YEARS)</label>
+          <input type="range" id="tenure" value="5" min="1" max="15" oninput="updateTenureLabel(); calculate()" style="background:transparent;border:none;padding:4px 0">
+          <div style="display:flex;justify-content:space-between;font-size:0.75rem;opacity:0.7;margin-top:4px">
+            <span>1 yr</span><span id="tenureLabel" style="color:var(--gold);font-weight:700">5 yrs</span><span>15 yrs</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>INVESTMENT TYPE</label>
+          <select id="investType" onchange="calculate()">
+            <option value="lumpsum">Lump Sum</option>
+            <option value="annual" selected>Annual (every year)</option>
+          </select>
+        </div>
+        <button class="calc-btn" onclick="calculate()">Calculate Returns →</button>
+      </div>
+      <div class="result-panel">
+        <h3>📊 Projected Returns</h3>
+        <div id="resultRows">
+          <div class="result-row"><span class="label">Total Invested</span><span class="value" id="r-invested">₹5,00,000</span></div>
+          <div class="result-row"><span class="label">Interest Earned</span><span class="value" id="r-interest" style="color:var(--green)">₹1,24,397</span></div>
+          <div class="result-row"><span class="label">Effective Rate</span><span class="value" id="r-rate">8.2%</span></div>
+          <div class="result-row"><span class="label">Compounding</span><span class="value" id="r-compound">Yearly</span></div>
+        </div>
+        <div class="result-total">
+          <div class="t-label">MATURITY AMOUNT</div>
+          <div class="t-amount" id="r-maturity">₹6,24,397</div>
+          <div class="result-gain" id="r-gain">You earn ₹1,24,397 (24.9% gain)</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Principal</span><span>Interest</span></div>
+          <div class="bar-track" style="margin-bottom:6px">
+            <div class="bar-fill bar-principal" id="bar-p" style="width:80%"></div>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-interest" id="bar-i" style="width:20%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year-by-year table -->
+    <div style="margin-top:24px;background:#fff;border-radius:16px;padding:20px;overflow-x:auto">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:14px;color:var(--navy)">📅 Year-by-Year Breakdown</div>
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem" id="yearTable">
+        <thead>
+          <tr style="background:var(--navy);color:#fff">
+            <th style="padding:9px 14px;text-align:left;border-radius:8px 0 0 0">Year</th>
+            <th style="padding:9px 14px;text-align:right">Opening Balance</th>
+            <th style="padding:9px 14px;text-align:right">Deposit</th>
+            <th style="padding:9px 14px;text-align:right">Interest</th>
+            <th style="padding:9px 14px;text-align:right;border-radius:0 8px 0 0">Closing Balance</th>
+          </tr>
+        </thead>
+        <tbody id="yearTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BENEFITS & TAX -->
+  <div class="section" id="sec-benefits">
+    <div class="sec-title">Benefits of Government Savings Schemes</div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="icon">🔒</div>
+        <h4>100% Capital Safety</h4>
+        <p>Sovereign-backed instruments — your principal is fully protected by the Government of India. Zero credit risk.</p>
+      </div>
+      <div class="benefit-card bc-green">
+        <div class="icon">📈</div>
+        <h4>Higher Than FD Rates</h4>
+        <p>SCSS &amp; SSY offer 8.2% — consistently above most bank FDs, especially for tax-adjusted returns.</p>
+      </div>
+      <div class="benefit-card bc-teal">
+        <div class="icon">📅</div>
+        <h4>Quarterly Rate Review</h4>
+        <p>Rates are revised by MoF each quarter, ensuring you benefit from macro interest rate movements.</p>
+      </div>
+      <div class="benefit-card bc-purple">
+        <div class="icon">🏦</div>
+        <h4>Widely Accessible</h4>
+        <p>Available at 1.5 lakh+ Post Offices and all major banks across India. No broker needed.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">👶</div>
+        <h4>Future-Proof Planning</h4>
+        <p>SSY &amp; PPF build long-term wealth for children's education, marriage, and retirement.</p>
+      </div>
+      <div class="benefit-card bc-green">
+        <div class="icon">💰</div>
+        <h4>Loan / Partial Withdrawal</h4>
+        <p>PPF allows loans from year 3 and partial withdrawals from year 7. SCSS allows premature closure with penalty.</p>
+      </div>
+      <div class="benefit-card bc-teal">
+        <div class="icon">🌐</div>
+        <h4>Online Management</h4>
+        <p>Manage PPF, NPS, and NSC online via India Post Payments Bank, SBI YONO, or eNPS portal.</p>
+      </div>
+      <div class="benefit-card bc-purple">
+        <div class="icon">🏛️</div>
+        <h4>Nomination &amp; Joint Holding</h4>
+        <p>Add nominee easily. POMIS, SCSS, &amp; NSC support joint holding for family financial planning.</p>
+      </div>
+    </div>
+
+    <div class="tax-banner">
+      <div class="tax-icon">🧾</div>
+      <div class="tax-body">
+        <h3>Tax Exemptions at a Glance</h3>
+        <div class="tax-items">
+          <span class="tax-chip">PPF → EEE (Exempt-Exempt-Exempt)</span>
+          <span class="tax-chip">SSY → EEE (Fully tax-free)</span>
+          <span class="tax-chip">NSC → 80C deduction up to ₹1.5L</span>
+          <span class="tax-chip">SCSS → 80C deduction on deposit</span>
+          <span class="tax-chip">NPS → 80C + extra ₹50K under 80CCD(1B)</span>
+          <span class="tax-chip">PPF Interest → Tax-free on maturity</span>
+          <span class="tax-chip">KVP/POMIS → Interest taxable as income</span>
+          <span class="tax-chip">SCSS TDS → Applicable if interest > ₹50K/yr</span>
+        </div>
+        <p style="margin-top:12px;font-size:0.78rem;opacity:0.75">💡 Under the Old Tax Regime, Section 80C allows deductions up to ₹1,50,000/year. NPS gives an additional ₹50,000 under 80CCD(1B).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RATES -->
+  <div class="section" id="sec-rates">
+    <div class="sec-title">Latest Interest Rates — Q1 FY2025–26</div>
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Scheme</th>
+          <th>Rate (p.a.)</th>
+          <th>Compounding</th>
+          <th>Tenure</th>
+          <th>Min Deposit</th>
+          <th>Max Deposit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PPF</strong></td>
+          <td><span class="rate-badge">7.1%</span></td>
+          <td>Annual</td>
+          <td>15 years</td>
+          <td>₹500/yr</td>
+          <td>₹1,50,000/yr</td>
+        </tr>
+        <tr>
+          <td><strong>SSY</strong></td>
+          <td><span class="rate-badge high">8.2%</span></td>
+          <td>Annual</td>
+          <td>21 years</td>
+          <td>₹250/yr</td>
+          <td>₹1,50,000/yr</td>
+        </tr>
+        <tr>
+          <td><strong>SCSS</strong></td>
+          <td><span class="rate-badge high">8.2%</span></td>
+          <td>Quarterly payout</td>
+          <td>5 years</td>
+          <td>₹1,000</td>
+          <td>₹30,00,000</td>
+        </tr>
+        <tr>
+          <td><strong>NSC (VIII)</strong></td>
+          <td><span class="rate-badge">7.7%</span></td>
+          <td>Annual</td>
+          <td>5 years</td>
+          <td>₹1,000</td>
+          <td>No limit</td>
+        </tr>
+        <tr>
+          <td><strong>POMIS</strong></td>
+          <td><span class="rate-badge">7.4%</span></td>
+          <td>Monthly payout</td>
+          <td>5 years</td>
+          <td>₹1,000</td>
+          <td>₹9,00,000 (single) / ₹15L (joint)</td>
+        </tr>
+        <tr>
+          <td><strong>KVP</strong></td>
+          <td><span class="rate-badge">7.5%</span></td>
+          <td>Annual</td>
+          <td>~115 months</td>
+          <td>₹1,000</td>
+          <td>No limit</td>
+        </tr>
+        <tr>
+          <td><strong>Post Office TD (5yr)</strong></td>
+          <td><span class="rate-badge">7.5%</span></td>
+          <td>Quarterly</td>
+          <td>1/2/3/5 yrs</td>
+          <td>₹1,000</td>
+          <td>No limit</td>
+        </tr>
+        <tr>
+          <td><strong>NPS</strong></td>
+          <td><span class="rate-badge high">9–12%*</span></td>
+          <td>Market-linked</td>
+          <td>Till age 60</td>
+          <td>₹500/yr</td>
+          <td>No limit</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="rates-note">
+      ⚠️ <span><strong>Note:</strong> Rates are set by Ministry of Finance and revised quarterly (Jan–Mar, Apr–Jun, Jul–Sep, Oct–Dec). NPS returns are indicative averages based on equity/debt mix. Always check <strong>indiapost.gov.in</strong> or <strong>finmin.nic.in</strong> for the latest rates before investing.</span>
+    </div>
+  </div>
+
+  <!-- KEY POINTS -->
+  <div class="section" id="sec-keypoints">
+    <div class="sec-title">Key Points for New Investors</div>
+    <div class="kp-grid">
+      <div class="kp-card">
+        <h4>🎯 Start Early for PPF</h4>
+        <p>Invest before the 5th of every month to earn interest for that month. The 15-year lock-in with compounding creates extraordinary long-term wealth.</p>
+      </div>
+      <div class="kp-card">
+        <h4>👧 SSY Deadline</h4>
+        <p>Sukanya Samriddhi account must be opened before the girl child turns 10. You must deposit for only the first 15 years; it matures at 21 years.</p>
+      </div>
+      <div class="kp-card">
+        <h4>💼 NPS Tax Advantage</h4>
+        <p>NPS offers the best tax savings — ₹2 lakh deduction per year (₹1.5L under 80C + ₹50K under 80CCD). Perfect for salaried individuals in 30% bracket.</p>
+      </div>
+      <div class="kp-card">
+        <h4>🏠 PPF Loan Facility</h4>
+        <p>You can take a loan against your PPF balance from the 3rd financial year. This provides liquidity while your money continues to compound.</p>
+      </div>
+      <div class="kp-card">
+        <h4>💸 SCSS — Best for Retirees</h4>
+        <p>At 8.2% with quarterly payouts, SCSS is ideal for post-retirement regular income. Deposit your retirement corpus here first before anything else.</p>
+      </div>
+      <div class="kp-card">
+        <h4>📋 Old vs New Tax Regime</h4>
+        <p>80C deductions only apply under the Old Tax Regime. If you have opted for the New Regime, tax benefits of NSC, PPF, and SCSS are NOT available.</p>
+      </div>
+      <div class="kp-card">
+        <h4>🔄 NSC Auto-Reinvestment</h4>
+        <p>Interest earned on NSC is deemed to be reinvested, qualifying for 80C deduction every year — a hidden benefit most investors miss.</p>
+      </div>
+      <div class="kp-card">
+        <h4>🚫 NRI Restriction</h4>
+        <p>Most schemes (PPF, SSY, SCSS, NSC) are NOT available to NRIs. Only NPS allows NRI participation. If you become NRI, your PPF account continues but no fresh deposits.</p>
+      </div>
+      <div class="kp-card">
+        <h4>📱 Where to Start</h4>
+        <p>Nearest Post Office or nationalized bank branch. For NPS: enps.nsdl.com. For PPF: any bank's netbanking (SBI, HDFC, ICICI, Axis etc.).</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--navy),#1a4a8a);border-radius:20px;padding:28px 32px;margin-top:24px;color:#fff;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:3rem">🇮🇳</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:8px">Quick Recommendation Guide</div>
+        <div style="font-size:0.82rem;opacity:0.85;line-height:1.8">
+          <strong style="color:var(--gold)">Salaried employee (tax saving):</strong> PPF + NPS combo → save ₹2L tax p.a.<br>
+          <strong style="color:var(--gold)">Parent of girl child:</strong> SSY — highest rate + EEE status<br>
+          <strong style="color:var(--gold)">Senior citizen (60+):</strong> SCSS — 8.2% with quarterly income<br>
+          <strong style="color:var(--gold)">Regular income needed:</strong> POMIS — fixed monthly payout<br>
+          <strong style="color:var(--gold)">Short-term (5 yr), no tax goal:</strong> NSC or Post Office TD
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  ⚠️ This document is for informational purposes only. Interest rates are based on Q1 2025–26 data and are subject to quarterly revision by the Ministry of Finance, Government of India.<br>
+  Always consult indiapost.gov.in, finmin.nic.in, or a registered financial advisor before investing.
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  event.target.classList.add('active');
+  if (id === 'calculator') calculate();
+}
+
+function updateRate() {
+  calculate();
+}
+function updateTenureLabel() {
+  const t = document.getElementById('tenure').value;
+  document.getElementById('tenureLabel').textContent = t + ' yr' + (t > 1 ? 's' : '');
+}
+
+function fmt(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function calculate() {
+  const schemeEl = document.getElementById('schemeSelect');
+  const rate = parseFloat(schemeEl.value) / 100;
+  const annual = parseFloat(document.getElementById('principal').value) || 100000;
+  const years = parseInt(document.getElementById('tenure').value);
+  const type  = document.getElementById('investType').value;
+
+  let balance = 0;
+  let totalDeposit = 0;
+  const rows = [];
+
+  for (let y = 1; y <= years; y++) {
+    const opening = balance;
+    const deposit = (type === 'annual' || y === 1) ? annual : 0;
+    if (type === 'lumpsum' && y > 1) {
+      const interest = balance * rate;
+      balance += interest;
+      rows.push({ y, opening, deposit: 0, interest, closing: balance });
+    } else {
+      const dep = (type === 'lumpsum') ? annual : annual;
+      const actualDeposit = (type === 'lumpsum' && y > 1) ? 0 : annual;
+      totalDeposit += actualDeposit;
+      const interest = (balance + actualDeposit) * rate;
+      balance = balance + actualDeposit + interest;
+      rows.push({ y, opening, deposit: actualDeposit, interest, closing: balance });
+    }
+  }
+
+  if (type === 'lumpsum') {
+    totalDeposit = annual;
+    balance = annual;
+    const tempRows = [];
+    for (let y = 1; y <= years; y++) {
+      const opening = balance;
+      const interest = balance * rate;
+      balance += interest;
+      tempRows.push({ y, opening, deposit: y === 1 ? annual : 0, interest, closing: balance });
+    }
+    const maturity = tempRows[tempRows.length - 1].closing;
+    const earned = maturity - annual;
+    renderResult(annual, earned, maturity, rate, tempRows);
+    return;
+  }
+
+  const maturity = rows[rows.length - 1].closing;
+  const earned = maturity - totalDeposit;
+  renderResult(totalDeposit, earned, maturity, rate, rows);
+}
+
+function renderResult(invested, earned, maturity, rate, rows) {
+  document.getElementById('r-invested').textContent = fmt(invested);
+  document.getElementById('r-interest').textContent = fmt(earned);
+  document.getElementById('r-rate').textContent = (rate * 100).toFixed(1) + '%';
+  document.getElementById('r-maturity').textContent = fmt(maturity);
+  const pct = (earned / invested * 100).toFixed(1);
+  document.getElementById('r-gain').textContent = `You earn ${fmt(earned)} (${pct}% gain)`;
+  const pPct = Math.round(invested / maturity * 100);
+  const iPct = Math.round(earned / maturity * 100);
+  document.getElementById('bar-p').style.width = pPct + '%';
+  document.getElementById('bar-i').style.width = iPct + '%';
+
+  const tbody = document.getElementById('yearTableBody');
+  tbody.innerHTML = rows.map((r, i) => `
+    <tr style="background:${i % 2 === 0 ? '#fff' : '#fafafa'}">
+      <td style="padding:9px 14px;font-weight:600">Year ${r.y}</td>
+      <td style="padding:9px 14px;text-align:right">${fmt(r.opening)}</td>
+      <td style="padding:9px 14px;text-align:right;color:var(--teal)">${fmt(r.deposit)}</td>
+      <td style="padding:9px 14px;text-align:right;color:var(--green);font-weight:600">${fmt(r.interest)}</td>
+      <td style="padding:9px 14px;text-align:right;font-family:'Syne',sans-serif;font-weight:700;color:var(--navy)">${fmt(r.closing)}</td>
+    </tr>
+  `).join('');
+}
+
+// Init
+calculate();
+</script>
+</body>
+</html>
